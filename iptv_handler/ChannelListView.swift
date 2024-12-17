@@ -24,11 +24,10 @@ struct ChannelListView: View {
                     TextField("Search channels...", text: $searchText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
-                        .onChange(of: searchText) { 
+                        .onChange(of: searchText) {
                             filterChannels()
                         }
 
-                    
                     if !searchText.isEmpty {
                         Button(action: {
                             searchText = ""
@@ -73,6 +72,15 @@ struct ChannelListView: View {
                 }
             }
             .navigationTitle("IPTV Channels")
+            .toolbar {
+                // Settings Button
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: SettingsView()) {
+                        Image(systemName: "gearshape")
+                            .font(.title2)
+                    }
+                }
+            }
             .onAppear(perform: loadChannels)
             .sheet(item: $selectedChannel) { channel in
                 VideoPlayerView(channel: channel)
@@ -122,4 +130,3 @@ struct ChannelListView: View {
         }
     }
 }
-
