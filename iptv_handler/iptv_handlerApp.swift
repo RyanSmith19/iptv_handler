@@ -8,10 +8,12 @@
 import SwiftUI
 
 @main
-struct iptv_handlerApp: App {
+struct IPTVApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ChannelListView()
+            // ContentView()
         }
     }
 }
+
